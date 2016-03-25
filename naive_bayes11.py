@@ -16,5 +16,5 @@ clf = GaussianNB()
 clf.fit(x_train_a,label_train_a)
 # Now that I have learned, I should predict:
 x_test_a     = prep4fit.get_x_test_a()
-
+label_test_a = prep4fit.get_label_test_a()
 'bye'
