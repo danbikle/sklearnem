@@ -22,7 +22,17 @@ for xoos_a in x_test_a:
   xf_a        = xoos_a.astype(float)
   xr_a        = xf_a.reshape(1, -1)
   aprediction = clf.predict(xr_a)
-  predictions_l.append(aprediction[0])
+  if aprediction == True:
+    predictions_l.append(1)  # up   prediction
+  else:
+    predictions_l.append(-1) # down prediction
+
 pdb.set_trace()
 predictions_l
+
+# I should match the predictions to the test observations.
+test_df['pdir'] = predictions_l
+# I should count positive predictions.
+posp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == 1]
+
 'bye'
