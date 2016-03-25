@@ -17,4 +17,13 @@ clf.fit(x_train_a,label_train_a)
 # Now that I have learned, I should predict:
 x_test_a     = prep4fit.get_x_test_a()
 label_test_a = prep4fit.get_label_test_a()
+predictions_l = []
+for xoos_a in x_test_a:
+  xf_a        = xoos_a.astype(float)
+  xr_a        = xf_a.reshape(1, -1)
+  aprediction = clf.predict(xr_a)
+  pdb.set_trace()
+  predictions_l.append(aprediction)
+  'stophere'
+predictions_l
 'bye'
