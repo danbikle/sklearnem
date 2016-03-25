@@ -35,10 +35,15 @@ predictions_l
 test_df         = pd.read_csv('test.csv')
 test_df['pdir'] = predictions_l
 # Get actual_direction of each test observation, which is sign of pctlead
-pdb.set_trace()
+
 test_df['actual_dir'] = np.sign(test_df['pctlead'])
 test_df.head()
 # I should count positive predictions.
 posp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == 1]
+# I should count true positive predictions.
+tposp_df = posp_df[posp_df['actual_dir'] == 1]
+# I should calculate positive accuracy.
+pos_acc  = 100.0 * len(tposp_df)/len(posp_df)
+pdb.set_trace()
 
 'bye'
