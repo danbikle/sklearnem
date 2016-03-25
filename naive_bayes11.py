@@ -8,6 +8,7 @@
 import prep4fit
 import pdb
 
-x_train_a = prep4fit.get_x_train_a()
+x_train_a     = prep4fit.get_x_train_a()
+label_train_a = prep4fit.get_label_train_a()
 
 'bye'
