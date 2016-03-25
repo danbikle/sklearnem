@@ -22,8 +22,7 @@ for xoos_a in x_test_a:
   xf_a        = xoos_a.astype(float)
   xr_a        = xf_a.reshape(1, -1)
   aprediction = clf.predict(xr_a)
-  pdb.set_trace()
-  predictions_l.append(aprediction)
-  'stophere'
+  predictions_l.append(aprediction[0])
+pdb.set_trace()
 predictions_l
 'bye'
