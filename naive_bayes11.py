@@ -44,6 +44,14 @@ posp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == 1]
 tposp_df = posp_df[posp_df['actual_dir'] == 1]
 # I should calculate positive accuracy.
 pos_acc  = 100.0 * len(tposp_df)/len(posp_df)
+
+# I should count negative predictions.
+negp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == -1]
+# I should count true negative predictions.
+tnegp_df = negp_df[negp_df['actual_dir'] == -1]
+# I should calculate negative accuracy.
+neg_acc  = 100.0 * len(tnegp_df)/len(negp_df)
+
 pdb.set_trace()
 
 'bye'
