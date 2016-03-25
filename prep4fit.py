@@ -11,6 +11,7 @@ import pdb
 
 trainf   = 'training.csv'
 train_df = pd.read_csv(trainf)
+train_a  = np.array(train_df)
 
 # I should declare some integers to help me navigate the Arrays.
 cdate_i   = 0
