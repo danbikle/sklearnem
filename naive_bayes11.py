@@ -27,11 +27,15 @@ for xoos_a in x_test_a:
   else:
     predictions_l.append(-1) # down prediction
 
-pdb.set_trace()
+
 predictions_l
 
 # I should match the predictions to the test observations.
 test_df['pdir'] = predictions_l
+# Get actual_direction of each test observation, which is sign of pctlead
+pdb.set_trace()
+test_df['actual_dir'] = np.sign(test_df['pctlead'])
+test_df.head()
 # I should count positive predictions.
 posp_df  = test_df[['pdir','actual_dir']][test_df['pdir'] == 1]
 
