@@ -5,6 +5,8 @@
 # ref:
 # http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB
 
+import numpy  as np
+import pandas as pd
 import prep4fit
 import pdb
 
@@ -29,8 +31,8 @@ for xoos_a in x_test_a:
 
 
 predictions_l
-
 # I should match the predictions to the test observations.
+test_df         = pd.read_csv('test.csv')
 test_df['pdir'] = predictions_l
 # Get actual_direction of each test observation, which is sign of pctlead
 pdb.set_trace()
