@@ -48,3 +48,22 @@ def get_label_train_a():
   train_median  = np.median(y_train_a)
   label_train_a = y_train_a > train_median
   return label_train_a
+
+def get_x_test_a():
+  testf   = 'test.csv'
+  test_df = pd.read_csv(testf)
+  test_a  = np.array(test_df)
+  # I should declare some integers to help me navigate the Arrays.
+  cdate_i   = 0
+  cp_i      = 1
+  pctlead_i = 2
+  pctlag1_i = 3
+  pctlag2_i = 4
+  pctlag4_i = 5
+  pctlag8_i = 6
+  upf_i     = 7
+  lowf_i    = 8
+  end_i     = 9
+  # I should build X-arrays (I call this 'independent' data).
+  x_test_a = test_a[:,pctlag1_i:end_i]
+  return x_test_a
