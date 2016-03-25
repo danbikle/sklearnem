@@ -11,4 +11,8 @@ import pdb
 x_train_a     = prep4fit.get_x_train_a()
 label_train_a = prep4fit.get_label_train_a()
 
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
+clf.fit(x_train_a,label_train_a)
+
 'bye'
