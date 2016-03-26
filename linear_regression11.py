@@ -10,15 +10,17 @@ import pandas as pd
 import prep4fit
 import pdb
 
-x_train_a     = prep4fit.get_x_train_a()
-y_train_a     = prep4fit.get_y_train_a()
-
+x_train_a = prep4fit.get_x_train_a()
+y_train_a = prep4fit.get_y_train_a()
+# I should learn from x_train_a,label_train_a:
 from sklearn import linear_model
 clf = linear_model.LinearRegression()
-clf.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
-print(clf.coef_)
-prediction = clf.predict([[3,3]])
-print(prediction)
+clf.fit(x_train_a, y_train_a)
+# Now that I have learned, I should predict:
+x_test_a = prep4fit.get_x_test_a()
+y_test_a = prep4fit.get_y_test_a()
+predictions_l = []
+
 'bye'
 
 
