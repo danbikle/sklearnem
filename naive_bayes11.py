@@ -17,14 +17,14 @@ from sklearn.naive_bayes import GaussianNB
 clf = GaussianNB()
 clf.fit(x_train_a,label_train_a)
 # Now that I have learned, I should predict:
-x_test_a     = prep4fit.get_x_test_a()
-label_test_a = prep4fit.get_label_test_a()
+x_test_a      = prep4fit.get_x_test_a()
+label_test_a  = prep4fit.get_label_test_a()
 predictions_l = []
 for xoos_a in x_test_a:
   xf_a        = xoos_a.astype(float)
   xr_a        = xf_a.reshape(1, -1)
   aprediction = clf.predict(xr_a)
-  if aprediction == True:
+  if aprediction[0] == True:
     predictions_l.append(1)  # up   prediction
   else:
     predictions_l.append(-1) # down prediction
