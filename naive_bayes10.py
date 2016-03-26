@@ -16,4 +16,5 @@ clf_pf = GaussianNB()
 clf_pf.partial_fit(X, Y, np.unique(Y))
 
 print(clf_pf.predict([[-0.8, -1]]))
+'bye'
 
