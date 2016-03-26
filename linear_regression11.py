@@ -20,6 +20,16 @@ clf.fit(x_train_a, y_train_a)
 x_test_a = prep4fit.get_x_test_a()
 y_test_a = prep4fit.get_y_test_a()
 predictions_l = []
+for xoos_a in x_test_a:
+  xf_a        = xoos_a.astype(float)
+  xr_a        = xf_a.reshape(1, -1)
+  aprediction = clf.predict(xr_a)
+  pdb.set_trace()
+  if aprediction > 0:
+    predictions_l.append(1)  # up   prediction
+  else:
+    predictions_l.append(-1) # down prediction
+
 
 'bye'
 
