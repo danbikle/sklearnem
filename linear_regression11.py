@@ -10,6 +10,8 @@ import pandas as pd
 import prep4fit
 import pdb
 
+x_train_a     = prep4fit.get_x_train_a()
+
 from sklearn import linear_model
 clf = linear_model.LinearRegression()
 clf.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
