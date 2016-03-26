@@ -25,7 +25,7 @@ for xoos_a in x_test_a:
   xr_a        = xf_a.reshape(1, -1)
   aprediction = clf.predict(xr_a)
   pdb.set_trace()
-  if aprediction > 0:
+  if aprediction[0] > 0:
     predictions_l.append(1)  # up   prediction
   else:
     predictions_l.append(-1) # down prediction
