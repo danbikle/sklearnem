@@ -8,6 +8,7 @@
 import numpy  as np
 import pandas as pd
 import prep4fit
+import rpt_acc_eff
 import pdb
 
 x_train_a = prep4fit.get_x_train_a()
@@ -29,13 +30,8 @@ for xoos_a in x_test_a:
   else:
     predictions_l.append(-1) # down prediction
 
-# I should match the predictions to the test observations.
-test_df         = pd.read_csv('test.csv')
-test_df['pdir'] = predictions_l
-# Get actual_direction of each test observation, which is sign of pctlead
-pdb.set_trace()
-test_df.head()
-
+# I should report accuracy and effectiveness.
+rpt_acc_eff(predictions_l)
 'bye'
 
 
