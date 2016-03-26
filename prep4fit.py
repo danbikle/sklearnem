@@ -27,6 +27,17 @@ def get_x_train_a():
   x_train_a = train_a[:,pctlag1_i:end_i]
   return x_train_a
 
+def get_y_train_a():
+  trainf    = 'training.csv'
+  train_df  = pd.read_csv(trainf)
+  train_a   = np.array(train_df)
+  # I should declare some integers to help me navigate the Arrays.
+  cdate_i   = 0
+  cp_i      = 1
+  pctlead_i = 2
+  y_train_a = train_a[:,pctlead_i]
+  return y_train_a
+
 def get_label_train_a():
   trainf   = 'training.csv'
   train_df = pd.read_csv(trainf)

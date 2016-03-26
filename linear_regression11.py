@@ -11,6 +11,7 @@ import prep4fit
 import pdb
 
 x_train_a     = prep4fit.get_x_train_a()
+y_train_a     = prep4fit.get_y_train_a()
 
 from sklearn import linear_model
 clf = linear_model.LinearRegression()
