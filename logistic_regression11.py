@@ -25,8 +25,11 @@ for xoos_a in x_test_a:
   xf_a        = xoos_a.astype(float)
   xr_a        = xf_a.reshape(1, -1)
   aprediction = clf.predict_proba(xr_a)
-  pdb.set_trace()
-  aprediction
+  if (aprediction > 0.5):
+    predictions_l.append(1)  # up   prediction
+  else:
+    predictions_l.append(-1) # down prediction
+
 # I should report accuracy and effectiveness.
 rpt_acc_eff.rpt_acc_eff(predictions_l)
 'bye'
