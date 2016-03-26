@@ -31,7 +31,7 @@ for xoos_a in x_test_a:
     predictions_l.append(-1) # down prediction
 
 # I should report accuracy and effectiveness.
-rpt_acc_eff(predictions_l)
+rpt_acc_eff.rpt_acc_eff(predictions_l)
 'bye'
 
 

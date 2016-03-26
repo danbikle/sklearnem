@@ -1,5 +1,8 @@
 # rpt_acc_eff.py
 
+import numpy  as np
+import pandas as pd
+
 # This script should help report accuracy and effectiveness.
 
 def rpt_acc_eff(predictions_l):
