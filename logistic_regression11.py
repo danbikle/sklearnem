@@ -25,7 +25,7 @@ for xoos_a in x_test_a:
   xf_a        = xoos_a.astype(float)
   xr_a        = xf_a.reshape(1, -1)
   aprediction = clf.predict_proba(xr_a)
-  if (aprediction > 0.5):
+  if (aprediction[0,1] > 0.5):
     predictions_l.append(1)  # up   prediction
   else:
     predictions_l.append(-1) # down prediction
