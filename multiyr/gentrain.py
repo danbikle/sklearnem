@@ -19,5 +19,21 @@
 # Should be:
 # 2015-12-31,2043.940,-1.530,-0.941,-1.656,-0.827,1.914
 
+import pandas as pd
+import numpy  as np
+import pdb
 
+# I should check cmd line arg
+import sys
+pdb.set_trace()
+if len(sys.argv) < 5:
+  print('Demo:')
+  print('cd ~/ddata')
+  print('python ~/sklearnem/multiyr/gentrain.py ftrGSPC2.csv 30 2010 2016')
+  print('...')
+  sys.exit()
 
+infile = sys.argv[1]
+print('I am training CSV files from this file:')
+print(infile)
+print('Busy...')
