@@ -64,7 +64,6 @@ for yr in range(startyr,1+finalyr):
   # I should get the test data now.
   boundry_right_test = str(yr+1)
   boundry_left_test  = str(yr)
-
   # I should create a DF from infile
   in_df = pd.read_csv(infile)
   # I should get RHS of df:
@@ -73,10 +72,8 @@ for yr in range(startyr,1+finalyr):
   # I should get LHS of df:
   lhs_test_pred = (rhs_test_df['cdate'] < boundry_right_test)
   lhs_test_df   =  rhs_test_df[lhs_test_pred]
-  pdb.set_trace()
-  # for 2010 I should see 2010
-  lhs_test_df.tail()
-
+  # I should write the df to csv file:
+  lhs_test_df.to_csv('test'+str(yr)+'.csv', float_format='%4.3f', index=False)
 # I should now have some CSV files.
 # They might look something like this:
 #  -rw-rw-r--   1 dan dan  390869 Mar 27 08:14 train2010.csv
