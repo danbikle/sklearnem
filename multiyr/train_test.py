@@ -85,7 +85,10 @@ for yr in range(startyr,1+finalyr):
   test_df['pdir']       = predictions_l
   test_df['x_eff']      = x_eff_l[1:]
   test_df['recent_eff'] = recent_eff_l[1:]
-  test_df['accuracy']   = acc_l
+  if (len(test_df) - len(acc_l) == 1):
+    # I should deal with most recent observation:
+    acc_l.append('unknown')
+  test_df['accuracy'] = acc_l
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
 
