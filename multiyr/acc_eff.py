@@ -20,4 +20,6 @@ finalyr = int(sys.argv[2])
 
 # I should create a loop which does train and test for each yr.
 for yr in range(startyr,1+finalyr):
-  print('predictions'+str(yr)+'.csv')
+  predf   = 'predictions'+str(yr)+'.csv'
+  pred_df = pd.read_csv(trainf)
+  pred_df.tail()
