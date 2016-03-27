@@ -58,6 +58,7 @@ for yr in range(startyr,1+finalyr):
       predictions_l.append(1)  # up   prediction
     else:
       predictions_l.append(-1) # down prediction
+  # I should save predictions_l so I can report later.
 
 'bye'
 
