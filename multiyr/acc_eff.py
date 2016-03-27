@@ -22,11 +22,19 @@ finalyr = int(sys.argv[2])
 for yr in range(startyr,1+finalyr):
   predf   = 'predictions'+str(yr)+'.csv'
   pred_df = pd.read_csv(predf)
-  pdb.set_trace()
-  pred_df.tail()
-  # I should count tp predictions
+  # I should count
   tp_pred = (pred_df['accuracy'] == 'tp')
+  tn_pred = (pred_df['accuracy'] == 'tn')
+  fp_pred = (pred_df['accuracy'] == 'fp')
+  fn_pred = (pred_df['accuracy'] == 'fn')
   tp_df   =  pred_df[tp_pred]
+  tn_df   =  pred_df[tn_pred]
+  fp_df   =  pred_df[fp_pred]
+  fn_df   =  pred_df[fn_pred]
+  pdb.set_trace()
   tp_df.head()
-  tp_df.tail()
+  tn_df.head()
+  fp_df.head()
+  fn_df.head()
+
 
