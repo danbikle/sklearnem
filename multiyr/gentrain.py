@@ -54,3 +54,4 @@ for yr in range(startyr,1+finalyr):
   lhs_pred = (rhs_df['cdate'] < boundry_right)
   lhs_df   =  rhs_df[lhs_pred]
   # I should write the df to csv file:
+  lhs_df.to_csv('train'+str(yr)+'.csv', float_format='%4.3f', index=False)
