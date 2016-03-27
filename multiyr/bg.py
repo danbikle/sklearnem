@@ -58,7 +58,5 @@ for yr in range(startyr,1+finalyr):
   plt.close()
   print('New png file: ')
   print(pngf)
-
-pdb.set_trace()
-pred_df.tail()
+'bye'
 
