@@ -82,7 +82,7 @@ for yr in range(startyr,1+finalyr):
       acc_l.append('tn')
     
 
-  # I should save predictions_l so I can report later.
+  # I should save predictions_l, eff, acc, so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
   test_df['pdir']       = predictions_l
   test_df['x_eff']      = x_eff_l[1:]
@@ -91,6 +91,8 @@ for yr in range(startyr,1+finalyr):
   pdb.set_trace()
   test_df.head()
   test_df.tail()
+  # I should write to CSV:
+  test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
 
 'bye'
 
