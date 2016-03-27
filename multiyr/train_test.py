@@ -42,7 +42,11 @@ for yr in range(startyr,1+finalyr):
   from sklearn import linear_model
   clf = linear_model.LogisticRegression()
   clf.fit(x_train_a, label_train_a)
-  pdb.set_trace()
-  clf
+  # Now that I have learned, I should predict:
+  testf    = 'test'+str(yr)+'.csv'
+  test_df  = pd.read_csv(testf)
+  test_a   = np.array(test_df)
+  x_test_a = test_a[:,pctlag1_i:end_i]
+
 'bye'
 
