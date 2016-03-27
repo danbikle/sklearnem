@@ -44,15 +44,18 @@ finalyr = int(sys.argv[4])
 
 for yr in range(startyr,1+finalyr):
   print(yr)
-  boundry_right = yr
-  boundry_left  = yr-numyr
+  boundry_right = str(yr)
+  boundry_left  = str(yr-numyr)
   # I should create a DF from infile
   in_df = pd.read_csv(infile)
   in_df.head()
   # I should get RHS of df:
   rhs_pred = (in_df['cdate'] > boundry_left)
   rhs_df   =  in_df[rhs_pred]
-  pdb.set_trace()
   rhs_df.head()
   # 2010-30 is ... 1980
-
+  # I should get LHS of df:
+  lhs_pred = (rhs_df['cdate'] < boundry_right)
+  lhs_df   =  rhs_df[lhs_pred]
+  pdb.set_trace()
+  lhs_df.tail()
