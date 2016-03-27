@@ -32,8 +32,6 @@ python ~/sklearnem/multiyr/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 python ~/sklearnem/multiyr/train_test.py $STARTYR $ENDYR
 # Now I should have CSV files with predictions mixed with actual results.
 
-exit
-
 # Then I should report accuracy and effectiveness.
 python ~/sklearnem/multiyr/acc_eff.py $STARTYR $ENDYR
 

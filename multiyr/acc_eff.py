@@ -20,4 +20,4 @@ finalyr = int(sys.argv[2])
 
 # I should create a loop which does train and test for each yr.
 for yr in range(startyr,1+finalyr):
-  print(yr)
+  print('predictions'+str(yr)+'.csv')
