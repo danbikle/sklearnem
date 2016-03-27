@@ -38,7 +38,11 @@ for yr in range(startyr,1+finalyr):
   y_train_a = train_a[:,pctlead_i]
   train_median  = np.median(y_train_a)
   label_train_a = y_train_a > train_median
+  # I should learn from x_train_a,label_train_a:
+  from sklearn import linear_model
+  clf = linear_model.LogisticRegression()
+  clf.fit(x_train_a, label_train_a)
   pdb.set_trace()
-  label_train_a
+  clf
 'bye'
 
