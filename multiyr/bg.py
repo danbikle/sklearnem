@@ -29,6 +29,18 @@ for yr in range(startyr,1+finalyr):
   lead_l  = list(np.array(leadp_l)-np.array(cp_l))
   pred_df['lead']  = lead_l
   pred_df['gdelta']=pred_df['actual_dir']*pred_df['pdir']*np.sign(pred_df['lead'])*pred_df['lead']
+  # I should get initial green_l
+  green_l = [cp_l[0]]
+  gcount  = 0
+  for gdelta in pred_df['gdelta']:
+    gcount += 1
+    green_l.append(green_l[gcount-1]+gdelta)
+    pdb.set_trace()
+    cp_l
+    gdelta
+    green_l
+
+
 pdb.set_trace()
 pred_df.tail()
 
