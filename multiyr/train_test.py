@@ -50,7 +50,14 @@ for yr in range(startyr,1+finalyr):
   y_test_a = test_a[:,pctlead_i]
   label_test_a  = y_test_a > train_median
   predictions_l = []
+  xcount        = 0
+  x_eff_l       = []
+  recent_eff_l  = []
   for xoos_a in x_test_a:
+    xcount     += 1
+    if (xcount < 5):
+      x_eff_l.append(0.0)
+      recent_eff_l.append(0.0)
     xf_a        = xoos_a.astype(float)
     xr_a        = xf_a.reshape(1, -1)
     aprediction = clf.predict_proba(xr_a)
@@ -58,9 +65,17 @@ for yr in range(startyr,1+finalyr):
       predictions_l.append(1)  # up   prediction
     else:
       predictions_l.append(-1) # down prediction
+    # Note effectiveness of this prediction:
+    pdb.set_trace()
+    x_eff_l.append(predictions_l[xcount]*y_test_a[xcount])
+    # Note recent effectiveness of this prediction:
+    recent_eff_l.append(np.mean(x_eff_l[-4:]))
+
   # I should save predictions_l so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
   test_df['pdir']       = predictions_l
+  test_df['x_eff']      = x_eff_l
+  test_df['recent_eff'] = recent_eff_l
   pdb.set_trace()
   test_df.head()
   test_df.tail()
