@@ -22,4 +22,5 @@ finalyr = int(sys.argv[2])
 for yr in range(startyr,1+finalyr):
   predf   = 'predictions'+str(yr)+'.csv'
   pred_df = pd.read_csv(trainf)
+  pdb.set_trace()
   pred_df.tail()
