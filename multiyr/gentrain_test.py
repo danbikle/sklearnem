@@ -70,9 +70,12 @@ for yr in range(startyr,1+finalyr):
   # I should get RHS of df:
   rhs_test_pred = (in_df['cdate'] > boundry_left_test)
   rhs_test_df   =  in_df[rhs_test_pred]
+  # I should get LHS of df:
+  lhs_test_pred = (rhs_test_df['cdate'] < boundry_right_test)
+  lhs_test_df   =  rhs_test_df[lhs_test_pred]
   pdb.set_trace()
   # for 2010 I should see 2010
-  rhs_test_df.head()
+  lhs_test_df.tail()
 
 # I should now have some CSV files.
 # They might look something like this:
