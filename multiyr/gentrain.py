@@ -44,4 +44,10 @@ finalyr = int(sys.argv[4])
 
 for yr in range(startyr,1+finalyr):
   print(yr)
+  boundry_right = yr
+  boundry_left  = yr-numyr
+  # I should create a DF from infile
+  in_df = pd.read_csv(infile)
+  pdb.set_trace()
+  in_df.head()
 
