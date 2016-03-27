@@ -35,9 +35,8 @@ for yr in range(startyr,1+finalyr):
   pctlag8_i = 6
   end_i     = 7
   x_train_a = train_a[:,pctlag1_i:end_i]
-  pdb.set_trace()
-  train_a[:4,:]
-  x_train_a[:4,:]
-
+  y_train_a = train_a[:,pctlead_i]
+  train_median  = np.median(y_train_a)
+  label_train_a = y_train_a > train_median
 'bye'
 
