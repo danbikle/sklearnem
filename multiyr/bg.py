@@ -35,11 +35,7 @@ for yr in range(startyr,1+finalyr):
   for gdelta in pred_df['gdelta']:
     gcount += 1
     green_l.append(green_l[gcount-1]+gdelta)
-    pdb.set_trace()
-    cp_l
-    gdelta
-    green_l
-
+  pred_df['green'] = green_l
 
 pdb.set_trace()
 pred_df.tail()
