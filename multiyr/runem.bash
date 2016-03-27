@@ -15,7 +15,9 @@
 cd     ~/ddata
 python ~/sklearnem/multiyr/genf.py GSPC2.csv
 # Now, I should have ftrGSPC2.csv 
+echo I should see some data:
 head   ftrGSPC2.csv
+echo I should see some data:
 tail   ftrGSPC2.csv
 
 # Next I generate training data CSV files:

@@ -25,8 +25,7 @@ import pdb
 
 # I should check cmd line arg
 import sys
-pdb.set_trace()
-if len(sys.argv) < 5:
+if (len(sys.argv) < 5):
   print('Demo:')
   print('cd ~/ddata')
   print('python ~/sklearnem/multiyr/gentrain.py ftrGSPC2.csv 30 2010 2016')
@@ -34,6 +33,15 @@ if len(sys.argv) < 5:
   sys.exit()
 
 infile = sys.argv[1]
-print('I am training CSV files from this file:')
+print('I am building training CSV files from this file:')
 print(infile)
 print('Busy...')
+numyr   = int(sys.argv[2])
+startyr = int(sys.argv[3])
+finalyr = int(sys.argv[4])
+
+# I should create a loop which builds the files I want:
+
+for yr in range(startyr,1+finalyr):
+  print(yr)
+
