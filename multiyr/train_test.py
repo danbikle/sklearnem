@@ -55,9 +55,6 @@ for yr in range(startyr,1+finalyr):
   recent_eff_l  = []
   for xoos_a in x_test_a:
     xcount     += 1 # should == 0 1st time through
-    if (xcount < 5):
-      x_eff_l.append(0.0)
-      recent_eff_l.append(0.0)
     xf_a        = xoos_a.astype(float)
     xr_a        = xf_a.reshape(1, -1)
     aprediction = clf.predict_proba(xr_a)
@@ -67,9 +64,12 @@ for yr in range(startyr,1+finalyr):
       predictions_l.append(-1) # down prediction
     # Note effectiveness of this prediction:
     pdb.set_trace()
-    x_eff_l.append(predictions_l[xcount]*y_test_a[xcount])
+    x_eff_l.append(predictions_l[xcount]*y_test_a[xcount]))
     # Note recent effectiveness of this prediction:
-    recent_eff_l.append(np.mean(x_eff_l[-2:]))
+    if (xcount < 5):
+      recent_eff_l.append(0.0)
+    else:
+      recent_eff_l.append(np.mean(x_eff_l[-2:]))
 
   # I should save predictions_l so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
