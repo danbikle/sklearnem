@@ -55,3 +55,12 @@ for yr in range(startyr,1+finalyr):
   lhs_df   =  rhs_df[lhs_pred]
   # I should write the df to csv file:
   lhs_df.to_csv('train'+str(yr)+'.csv', float_format='%4.3f', index=False)
+# I should now have some files full of training data.
+# They might look something like this:
+#  -rw-rw-r--   1 dan dan  390869 Mar 27 08:14 train2010.csv
+#  -rw-rw-r--   1 dan dan  391049 Mar 27 08:14 train2011.csv
+#  -rw-rw-r--   1 dan dan  391164 Mar 27 08:14 train2012.csv
+#  -rw-rw-r--   1 dan dan  391136 Mar 27 08:14 train2013.csv
+#  -rw-rw-r--   1 dan dan  391240 Mar 27 08:14 train2014.csv
+#  -rw-rw-r--   1 dan dan  391246 Mar 27 08:14 train2015.csv
+#  -rw-rw-r--   1 dan dan  391602 Mar 27 08:14 train2016.csv
