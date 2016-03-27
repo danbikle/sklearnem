@@ -65,7 +65,7 @@ for yr in range(startyr,1+finalyr):
     # Note effectiveness of this prediction:
     x_eff_l.append(predictions_l[xcount]*y_test_a[xcount])
     # Note recent effectiveness of this prediction:
-    if (xcount < 5):
+    if (xcount < 4):
       recent_eff_l.append(0.0)
     else:
       pdb.set_trace()
