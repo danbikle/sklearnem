@@ -32,9 +32,14 @@ for yr in range(startyr,1+finalyr):
   fp_df   =  pred_df[fp_pred]
   fn_df   =  pred_df[fn_pred]
   pdb.set_trace()
-  tp_df.head()
-  tn_df.head()
-  fp_df.head()
-  fn_df.head()
+  tp_i = len(tp_df)
+  tn_i = len(tn_df)
+  fp_i = len(fp_df)
+  fn_i = len(fn_df)
+  print('For '+str(yr)+':')
+  print('Positive, Up,   Prediction Count is '+str(tp_i+fp_i))
+  print('Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
+  print('Positive Accuracy is '+str(tp_i / (tp_i+fp_i)))
+  print('Negative Accuracy is '+str(tn_i / (tn_i+fn_i)))
 
 
