@@ -59,6 +59,14 @@ for yr in range(startyr,1+finalyr):
     else:
       predictions_l.append(-1) # down prediction
   # I should save predictions_l so I can report later.
+  pred_df              = test_df['cdate']
+  pred_df['cp']        = test_df['cp']
+  pred_df['pctlead']   = test_df['pctlead']
+  pred_df['acutaldir'] = (test_df['pctlead'] > 0)
+  pred_df['pdir']      = predictions_l
+
+  pdb.set_trace()
+  pred_df.head()
 
 'bye'
 
