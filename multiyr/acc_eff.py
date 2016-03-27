@@ -41,6 +41,11 @@ for yr in range(startyr,1+finalyr):
   print('Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
   print('Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
   print('Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
+  # I should compute effectiveness
 
+  pred_up_pred = (pred_df['pdir'] == 1)
+  pred_up_df   = pred_df[pred_up_pred]
+  pdb.set_trace()
+  pred_up_df.head()
 
 
