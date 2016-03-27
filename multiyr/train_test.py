@@ -47,6 +47,7 @@ for yr in range(startyr,1+finalyr):
   test_df  = pd.read_csv(testf)
   test_a   = np.array(test_df)
   x_test_a = test_a[:,pctlag1_i:end_i]
-
+  y_test_a = test_a[:,pctlead_i]
+  label_test_a = y_test_a > train_median
 'bye'
 
