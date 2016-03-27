@@ -39,8 +39,13 @@ for yr in range(startyr,1+finalyr):
   train_median  = np.median(y_train_a)
   label_train_a = y_train_a > train_median
   # I should learn from x_train_a,label_train_a:
+
   from sklearn import linear_model
   clf = linear_model.LogisticRegression()
+
+  from sklearn.naive_bayes import GaussianNB
+  clf = GaussianNB()
+
   clf.fit(x_train_a, label_train_a)
   # Now that I have learned, I should predict:
   testf    = 'test'+str(yr)+'.csv'
@@ -58,8 +63,10 @@ for yr in range(startyr,1+finalyr):
     xcount     += 1 # should == 0 1st time through
     xf_a        = xoos_a.astype(float)
     xr_a        = xf_a.reshape(1, -1)
-    aprediction = clf.predict_proba(xr_a)[0,1]
-    if (aprediction > 0.5):
+    # aprediction = clf.predict_proba(xr_a)[0,1]
+    aprediction = clf.predict(xr_a)
+    # if (aprediction > 0.5):
+    if (aprediction[0] == True):
       predictions_l.append(1)  # up   prediction
     else:
       predictions_l.append(-1) # down prediction
