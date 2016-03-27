@@ -27,8 +27,8 @@ for yr in range(startyr,1+finalyr):
   leadp_l = cp_l[1:] + [cp_l[-1]]
   # I should get lead_l which leadp - cp
   lead_l  = list(np.array(leadp_l)-np.array(cp_l))
-  pred_df['lead']   = lead_l
-  pred_df['gdelta'] = pred_df['actual_dir'] * pred_df['pdir'] * pred_df['lead']
+  pred_df['lead']  = lead_l
+  pred_df['gdelta']=pred_df['actual_dir']*pred_df['pdir']*np.sign(pred_df['lead'])*pred_df['lead']
 pdb.set_trace()
 pred_df.tail()
 
