@@ -36,6 +36,7 @@ python ~/sklearnem/multiyr/train_test.py $STARTYR $ENDYR
 python ~/sklearnem/multiyr/acc_eff.py $STARTYR $ENDYR
 
 # Then I should build blue-green visualizations.
+python ~/sklearnem/multiyr/bg.py $STARTYR $ENDYR
 
 exit
 
