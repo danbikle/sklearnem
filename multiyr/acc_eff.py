@@ -40,6 +40,7 @@ for yr in range(startyr,1+finalyr):
   print('Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
   print('Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
   print('Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
+  print('Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
 
 
 
