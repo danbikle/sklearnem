@@ -48,6 +48,16 @@ for yr in range(startyr,1+finalyr):
   test_a   = np.array(test_df)
   x_test_a = test_a[:,pctlag1_i:end_i]
   y_test_a = test_a[:,pctlead_i]
-  label_test_a = y_test_a > train_median
+  label_test_a  = y_test_a > train_median
+  predictions_l = []
+  for xoos_a in x_test_a:
+    xf_a        = xoos_a.astype(float)
+    xr_a        = xf_a.reshape(1, -1)
+    aprediction = clf.predict_proba(xr_a)
+    if (aprediction[0,1] > 0.5):
+      predictions_l.append(1)  # up   prediction
+    else:
+      predictions_l.append(-1) # down prediction
+
 'bye'
 
