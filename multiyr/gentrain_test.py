@@ -63,13 +63,13 @@ for yr in range(startyr,1+finalyr):
   lhs_df.to_csv('train'+str(yr)+'.csv', float_format='%4.3f', index=False)
   # I should get the test data now.
   boundry_right_test = str(yr+1)
-  boundry_left_test  = str(yr-1)
+  boundry_left_test  = str(yr)
 
   # I should create a DF from infile
   in_df = pd.read_csv(infile)
   # I should get RHS of df:
   rhs_test_pred = (in_df['cdate'] > boundry_left_test)
-  rhs_test_df   =  in_df[rhs_pred]
+  rhs_test_df   =  in_df[rhs_test_pred]
   pdb.set_trace()
   # for 2010 I should see 2010
   rhs_test_df.head()
