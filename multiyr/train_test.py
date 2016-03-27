@@ -58,8 +58,8 @@ for yr in range(startyr,1+finalyr):
     xcount     += 1 # should == 0 1st time through
     xf_a        = xoos_a.astype(float)
     xr_a        = xf_a.reshape(1, -1)
-    aprediction = clf.predict_proba(xr_a)
-    if (aprediction[0,1] > 0.5):
+    aprediction = clf.predict_proba(xr_a)[0,1]
+    if (aprediction > 0.5):
       predictions_l.append(1)  # up   prediction
     else:
       predictions_l.append(-1) # down prediction
@@ -72,13 +72,13 @@ for yr in range(startyr,1+finalyr):
     else:
       recent_eff_l.append(np.mean(x_eff_l[-5:]))
     # Note accuracy of this prediction
-    if ((y_test_a[xcount] > 0) and (aprediction[0,1] > 0.5)):
+    if ((y_test_a[xcount] > 0) and (aprediction > 0.5)):
       acc_l.append('tp')
-    if ((y_test_a[xcount] > 0) and (aprediction[0,1] < 0.5)):
+    if ((y_test_a[xcount] > 0) and (aprediction < 0.5)):
       acc_l.append('fn')
-    if ((y_test_a[xcount] < 0) and (aprediction[0,1] > 0.5)):
+    if ((y_test_a[xcount] < 0) and (aprediction > 0.5)):
       acc_l.append('fp')
-    if ((y_test_a[xcount] < 0) and (aprediction[0,1] < 0.5)):
+    if ((y_test_a[xcount] < 0) and (aprediction < 0.5)):
       acc_l.append('tn')
     
 
