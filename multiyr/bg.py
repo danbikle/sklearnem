@@ -24,12 +24,18 @@ for yr in range(startyr,1+finalyr):
   pred_df = pd.read_csv(predf)
   # I should get leadp which is the price 1 ahead of cp:
   cp_l    = [p_f for p_f in pred_df['cp']]
-  leadp_l = [cp_l[0]] + cp_l[:-1]
+  leadp_l = cp_l[1:] + [cp_l[-1]]
   # I should get lead_l which leadp - cp
   lead_l  = list(np.array(leadp_l)-np.array(cp_l))
 
 pdb.set_trace()
+pred_df['lead'] = lead_l
+pred_df.head()
+pred_df.tail()
+
 cp_l[-4:]
 leadp_l[-4:]
 lead_l[-4:]
 pred_df.tail()
+pred_df['lead'] = lead_l
+
