@@ -50,11 +50,11 @@ for yr in range(startyr,1+finalyr):
   y_test_a = test_a[:,pctlead_i]
   label_test_a  = y_test_a > train_median
   predictions_l = []
-  xcount        = 0
+  xcount        = -1
   x_eff_l       = []
   recent_eff_l  = []
   for xoos_a in x_test_a:
-    xcount     += 1
+    xcount     += 1 # should == 0 1st time through
     if (xcount < 5):
       x_eff_l.append(0.0)
       recent_eff_l.append(0.0)
