@@ -23,8 +23,10 @@ for yr in range(startyr,1+finalyr):
   predf   = 'predictions'+str(yr)+'.csv'
   pred_df = pd.read_csv(predf)
   # I should get leadp which is the price 1 ahead of cp:
-  cp_l = List(pred_df['cp'])
+  leadp_l = list(pred_df['cp'])[0] + list(pred_df['cp'])[:-1]
+
 
 pdb.set_trace()
 cp_l
+leadp_l
 pred_df.tail()
