@@ -63,15 +63,15 @@ for yr in range(startyr,1+finalyr):
       predictions_l.append(1)  # up   prediction
     else:
       predictions_l.append(-1) # down prediction
-    # Note effectiveness of this prediction:
+    # I should save effectiveness of this prediction:
     pctlead = y_test_a[xcount]
     x_eff_l.append(predictions_l[xcount]*pctlead)
-    # Note recent effectiveness of this prediction:
+    # I should save recent effectiveness of this prediction:
     if (xcount < 5):
       recent_eff_l.append(0.0)
     else:
       recent_eff_l.append(np.mean(x_eff_l[-5:]))
-    # Note accuracy of this prediction
+    # I should save accuracy of this prediction
     if ((y_test_a[xcount] > 0) and (aprediction > 0.5)):
       acc_l.append('tp')
     if ((y_test_a[xcount] > 0) and (aprediction < 0.5)):
@@ -80,17 +80,12 @@ for yr in range(startyr,1+finalyr):
       acc_l.append('fp')
     if ((y_test_a[xcount] < 0) and (aprediction < 0.5)):
       acc_l.append('tn')
-    
-
   # I should save predictions_l, eff, acc, so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
   test_df['pdir']       = predictions_l
   test_df['x_eff']      = x_eff_l[1:]
   test_df['recent_eff'] = recent_eff_l[1:]
   test_df['accuracy']   = acc_l
-  pdb.set_trace()
-  test_df.head()
-  test_df.tail()
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
 
