@@ -73,12 +73,8 @@ for yr in range(startyr,1+finalyr):
   # I should save predictions_l so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
   test_df['pdir']       = predictions_l
-  pdb.set_trace()
-  len(x_eff_l)
-  len(recent_eff_l)
-  len(test_df)
-  test_df['x_eff']      = x_eff_l
-  test_df['recent_eff'] = recent_eff_l
+  test_df['x_eff']      = x_eff_l[1:]
+  test_df['recent_eff'] = recent_eff_l[1:]
   pdb.set_trace()
   test_df.head()
   test_df.tail()
