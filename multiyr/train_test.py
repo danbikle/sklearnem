@@ -53,6 +53,7 @@ for yr in range(startyr,1+finalyr):
   xcount        = -1
   x_eff_l       = [0.0]
   recent_eff_l  = [0.0]
+  acc_l         = []
   for xoos_a in x_test_a:
     xcount     += 1 # should == 0 1st time through
     xf_a        = xoos_a.astype(float)
@@ -63,18 +64,30 @@ for yr in range(startyr,1+finalyr):
     else:
       predictions_l.append(-1) # down prediction
     # Note effectiveness of this prediction:
-    x_eff_l.append(predictions_l[xcount]*y_test_a[xcount])
+    pctlead = y_test_a[xcount]
+    x_eff_l.append(predictions_l[xcount]*pctlead)
     # Note recent effectiveness of this prediction:
     if (xcount < 5):
       recent_eff_l.append(0.0)
     else:
       recent_eff_l.append(np.mean(x_eff_l[-5:]))
+    # Note accuracy of this prediction
+    if ((y_test_a[xcount] > 0) and (aprediction[0,1] > 0.5)):
+      acc_l.append('tp')
+    if ((y_test_a[xcount] > 0) and (aprediction[0,1] < 0.5)):
+      acc_l.append('fn')
+    if ((y_test_a[xcount] < 0) and (aprediction[0,1] > 0.5)):
+      acc_l.append('fp')
+    if ((y_test_a[xcount] < 0) and (aprediction[0,1] < 0.5)):
+      acc_l.append('tn')
+    
 
   # I should save predictions_l so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
   test_df['pdir']       = predictions_l
   test_df['x_eff']      = x_eff_l[1:]
   test_df['recent_eff'] = recent_eff_l[1:]
+  test_df['accuracy']   = acc_l
   pdb.set_trace()
   test_df.head()
   test_df.tail()
