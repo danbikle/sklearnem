@@ -64,7 +64,7 @@ for yr in range(startyr,1+finalyr):
       predictions_l.append(-1) # down prediction
     # Note effectiveness of this prediction:
     pdb.set_trace()
-    x_eff_l.append(predictions_l[xcount]*y_test_a[xcount]))
+    x_eff_l.append(predictions_l[xcount]*y_test_a[xcount])
     # Note recent effectiveness of this prediction:
     if (xcount < 5):
       recent_eff_l.append(0.0)
