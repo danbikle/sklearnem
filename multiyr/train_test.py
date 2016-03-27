@@ -69,7 +69,7 @@ for yr in range(startyr,1+finalyr):
     pdb.set_trace()
     x_eff_l.append(predictions_l[xcount]*y_test_a[xcount])
     # Note recent effectiveness of this prediction:
-    recent_eff_l.append(np.mean(x_eff_l[-4:]))
+    recent_eff_l.append(np.mean(x_eff_l[-2:]))
 
   # I should save predictions_l so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
