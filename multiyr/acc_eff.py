@@ -24,3 +24,9 @@ for yr in range(startyr,1+finalyr):
   pred_df = pd.read_csv(predf)
   pdb.set_trace()
   pred_df.tail()
+  # I should count tp predictions
+  tp_pred = (pred_df['accuracy'] == 'tp')
+  tp_df   =  pred_df[tp_pred]
+  tp_df.head()
+  tp_df.tail()
+
