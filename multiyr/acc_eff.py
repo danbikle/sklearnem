@@ -31,7 +31,6 @@ for yr in range(startyr,1+finalyr):
   tn_df   =  pred_df[tn_pred]
   fp_df   =  pred_df[fp_pred]
   fn_df   =  pred_df[fn_pred]
-  pdb.set_trace()
   tp_i = len(tp_df)
   tn_i = len(tn_df)
   fp_i = len(fp_df)
