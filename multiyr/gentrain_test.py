@@ -76,10 +76,19 @@ for yr in range(startyr,1+finalyr):
   lhs_test_df.to_csv('test'+str(yr)+'.csv', float_format='%4.3f', index=False)
 # I should now have some CSV files.
 # They might look something like this:
-#  -rw-rw-r--   1 dan dan  390869 Mar 27 08:14 train2010.csv
-#  -rw-rw-r--   1 dan dan  391049 Mar 27 08:14 train2011.csv
-#  -rw-rw-r--   1 dan dan  391164 Mar 27 08:14 train2012.csv
-#  -rw-rw-r--   1 dan dan  391136 Mar 27 08:14 train2013.csv
-#  -rw-rw-r--   1 dan dan  391240 Mar 27 08:14 train2014.csv
-#  -rw-rw-r--   1 dan dan  391246 Mar 27 08:14 train2015.csv
-#  -rw-rw-r--   1 dan dan  391602 Mar 27 08:14 train2016.csv
+#-rw-rw-r-- 1 dan dan   13144 Mar 27 09:17 /home/dan/ddata/test2010.csv
+#-rw-rw-r-- 1 dan dan   13239 Mar 27 09:17 /home/dan/ddata/test2011.csv
+#-rw-rw-r-- 1 dan dan   13093 Mar 27 09:17 /home/dan/ddata/test2012.csv
+#-rw-rw-r-- 1 dan dan   13120 Mar 27 09:17 /home/dan/ddata/test2013.csv
+#-rw-rw-r-- 1 dan dan   13144 Mar 27 09:17 /home/dan/ddata/test2014.csv
+#-rw-rw-r-- 1 dan dan   13272 Mar 27 09:17 /home/dan/ddata/test2015.csv
+#-rw-rw-r-- 1 dan dan    3031 Mar 27 09:17 /home/dan/ddata/test2016.csv
+#-rw-rw-r-- 1 dan dan  390869 Mar 27 09:17 /home/dan/ddata/train2010.csv
+#-rw-rw-r-- 1 dan dan  391049 Mar 27 09:17 /home/dan/ddata/train2011.csv
+#-rw-rw-r-- 1 dan dan  391164 Mar 27 09:17 /home/dan/ddata/train2012.csv
+#-rw-rw-r-- 1 dan dan  391136 Mar 27 09:17 /home/dan/ddata/train2013.csv
+#-rw-rw-r-- 1 dan dan  391240 Mar 27 09:17 /home/dan/ddata/train2014.csv
+#-rw-rw-r-- 1 dan dan  391246 Mar 27 09:17 /home/dan/ddata/train2015.csv
+#-rw-rw-r-- 1 dan dan  391602 Mar 27 09:17 /home/dan/ddata/train2016.csv
+
+
