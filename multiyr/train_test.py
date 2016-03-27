@@ -51,8 +51,8 @@ for yr in range(startyr,1+finalyr):
   label_test_a  = y_test_a > train_median
   predictions_l = []
   xcount        = -1
-  x_eff_l       = []
-  recent_eff_l  = []
+  x_eff_l       = [0.0]
+  recent_eff_l  = [0.0]
   for xoos_a in x_test_a:
     xcount     += 1 # should == 0 1st time through
     xf_a        = xoos_a.astype(float)
@@ -65,15 +65,18 @@ for yr in range(startyr,1+finalyr):
     # Note effectiveness of this prediction:
     x_eff_l.append(predictions_l[xcount]*y_test_a[xcount])
     # Note recent effectiveness of this prediction:
-    if (xcount < 4):
+    if (xcount < 5):
       recent_eff_l.append(0.0)
     else:
-      pdb.set_trace()
-      recent_eff_l.append(np.mean(x_eff_l[-4:]))
+      recent_eff_l.append(np.mean(x_eff_l[-5:]))
 
   # I should save predictions_l so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
   test_df['pdir']       = predictions_l
+  pdb.set_trace()
+  len(x_eff_l)
+  len(recent_eff_l)
+  len(test_df)
   test_df['x_eff']      = x_eff_l
   test_df['recent_eff'] = recent_eff_l
   pdb.set_trace()
