@@ -4,4 +4,15 @@
 # to train and test.
 
 # The results should get written to CSV files in ~/ddata/
+import numpy  as np
+import pandas as pd
+import pdb
 
+# I should check cmd line arg
+import sys
+if (len(sys.argv) < 3):
+  print('Demo:')
+  print('cd ~/ddata')
+  print('python ~/sklearnem/multiyr/train_test.py 2010 2016')
+  print('...')
+  sys.exit()
