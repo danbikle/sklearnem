@@ -4,6 +4,8 @@
 
 import numpy  as np
 import pandas as pd
+import datetime
+import matplotlib
 import pdb
 
 # I should check cmd line arg
@@ -32,13 +34,30 @@ for yr in range(startyr,1+finalyr):
   # I should get initial green_l
   green_l = [cp_l[0]]
   gcount  = 0
+  # I should grow green_l
   for gdelta in pred_df['gdelta']:
     gcount += 1
     green_l.append(green_l[gcount-1]+gdelta)
-  #pdb.set_trace()
-  len(pred_df)
-  len(green_l)
+  # I should add green_l to df:
   pred_df['green'] = green_l[:-1]
+  # matplotlib likes dates:
+  cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in pred_df['cdate'].values]
+
+  # I should plot
+  matplotlib.use('Agg')
+  # Order is important here.
+  # Do not move the next import:
+  import matplotlib.pyplot as plt
+  plt.figure(figsize=(15,10))
+  plt.plot(cdate_l, cp_l, 'b-', cdate_l, green_l[:-1], 'g-')
+
+  plt.title('Blue-Line/Green-Line Visualization (Blue: Long Only, Green: Follow Predictions)')
+  plt.grid(True)
+  pngf = 'plot'+str(yr)+'.png'
+  plt.savefig(pngf)
+  plt.close()
+  print('New png file: ')
+  print(pngf)
 
 pdb.set_trace()
 pred_df.tail()
