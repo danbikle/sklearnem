@@ -58,15 +58,15 @@ for yr in range(startyr,1+finalyr):
   xcount           = -1
   x_eff_l          = [0.0]
   recent_eff_l     = [0.0]
-  acc_l            = []
+  acc_nb_l            = []
   for xoos_a in x_test_a:
     xcount        += 1 # should == 0 1st time through
     xf_a           = xoos_a.astype(float)
     xr_a           = xf_a.reshape(1, -1)
     # aprediction = clf.predict_proba(xr_a)[0,1]
-    aprediction    = clf_nb.predict(xr_a)
+    aprediction_nb    = clf_nb.predict(xr_a)
     # if (aprediction > 0.5):
-    if (aprediction[0] == True):
+    if (aprediction_nb[0] == True):
       predictions_nb_l.append(1)  # up   prediction
     else:
       predictions_nb_l.append(-1) # down prediction
@@ -79,23 +79,23 @@ for yr in range(startyr,1+finalyr):
     else:
       recent_eff_l.append(np.mean(x_eff_l[-5:]))
     # I should save accuracy of this prediction
-    if ((y_test_a[xcount] > 0) and (aprediction > 0.5)):
-      acc_l.append('tp')
-    if ((y_test_a[xcount] > 0) and (aprediction < 0.5)):
-      acc_l.append('fn')
-    if ((y_test_a[xcount] < 0) and (aprediction > 0.5)):
-      acc_l.append('fp')
-    if ((y_test_a[xcount] < 0) and (aprediction < 0.5)):
-      acc_l.append('tn')
+    if ((y_test_a[xcount] > 0) and (aprediction_nb > 0.5)):
+      acc_nb_l.append('tp')
+    if ((y_test_a[xcount] > 0) and (aprediction_nb < 0.5)):
+      acc_nb_l.append('fn')
+    if ((y_test_a[xcount] < 0) and (aprediction_nb > 0.5)):
+      acc_nb_l.append('fp')
+    if ((y_test_a[xcount] < 0) and (aprediction_nb < 0.5)):
+      acc_nb_l.append('tn')
   # I should save predictions_nb_l, eff, acc, so I can report later.
   test_df['actual_dir'] = np.sign(test_df['pctlead'])
-  test_df['pdir']       = predictions_nb_l
+  test_df['pdir_nb']    = predictions_nb_l
   test_df['x_eff']      = x_eff_l[1:]
   test_df['recent_eff'] = recent_eff_l[1:]
-  if (len(test_df) - len(acc_l) == 1):
+  if (len(test_df) - len(acc_nb_l) == 1):
     # I should deal with most recent observation:
-    acc_l.append('unknown')
-  test_df['accuracy'] = acc_l
+    acc_nb_l.append('unknown')
+  test_df['accuracy_nb'] = acc_nb_l
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
 

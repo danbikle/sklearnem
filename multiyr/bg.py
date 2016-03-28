@@ -30,7 +30,7 @@ for yr in range(startyr,1+finalyr):
   # I should get lead_l which leadp - cp
   lead_l  = list(np.array(leadp_l)-np.array(cp_l))
   pred_df['lead']  = lead_l
-  pred_df['gdelta']=pred_df['actual_dir']*pred_df['pdir']*np.sign(pred_df['lead'])*pred_df['lead']
+  pred_df['gdelta']=pred_df['actual_dir']*pred_df['pdir_nb']*np.sign(pred_df['lead'])*pred_df['lead']
   # I should get initial green_l
   green_l = [cp_l[0]]
   gcount  = 0

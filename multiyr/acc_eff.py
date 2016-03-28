@@ -23,10 +23,10 @@ for yr in range(startyr,1+finalyr):
   predf   = 'predictions'+str(yr)+'.csv'
   pred_df = pd.read_csv(predf)
   # I should count
-  tp_pred = (pred_df['accuracy'] == 'tp')
-  tn_pred = (pred_df['accuracy'] == 'tn')
-  fp_pred = (pred_df['accuracy'] == 'fp')
-  fn_pred = (pred_df['accuracy'] == 'fn')
+  tp_pred = (pred_df['accuracy_nb'] == 'tp')
+  tn_pred = (pred_df['accuracy_nb'] == 'tn')
+  fp_pred = (pred_df['accuracy_nb'] == 'fp')
+  fn_pred = (pred_df['accuracy_nb'] == 'fn')
   tp_df   =  pred_df[tp_pred]
   tn_df   =  pred_df[tn_pred]
   fp_df   =  pred_df[fp_pred]
@@ -36,20 +36,21 @@ for yr in range(startyr,1+finalyr):
   fp_i = len(fp_df)
   fn_i = len(fn_df)
   print('For '+str(yr)+':')
-  print('Positive, Up,   Prediction Count is '+str(tp_i+fp_i))
-  print('Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
-  print('Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
-  print('Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
-  print('Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
+  print('Naive-Bayes: Positive, Up,   Prediction Count is '+str(tp_i+fp_i))
+  print('Naive-Bayes: Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
+  print('Naive-Bayes: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
+  print('Naive-Bayes: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
+  print('Naive-Bayes: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
   # I should compute effectiveness
-  pred_up_pred   = (pred_df['pdir'] ==  1)
-  pred_down_pred = (pred_df['pdir'] == -1)
+  pred_up_pred   = (pred_df['pdir_nb'] ==  1)
+  pred_down_pred = (pred_df['pdir_nb'] == -1)
   pred_up_df     = pred_df[pred_up_pred]
   pred_down_df   = pred_df[pred_down_pred]
   eff_up         = np.mean(pred_up_df['pctlead'])
   eff_down       = np.mean(pred_down_df['pctlead'])
-  print('Positive, Up,   effectiveness is '+str(eff_up)+'%')
-  print('Negative, Down, effectiveness is '+str(eff_down)+'%')
+  print('Naive-Bayes: Positive, Up,   effectiveness is '+str(eff_up)+'%')
+  print('Naive-Bayes: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%')
+  print('Naive-Bayes: Negative, Down, effectiveness is '+str(eff_down)+'%')
 
 
 
