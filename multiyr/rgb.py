@@ -31,7 +31,7 @@ for yr in range(startyr,1+finalyr):
   lead_l  = list(np.array(leadp_l)-np.array(cp_l))
   pred_df['lead']  = lead_l
   pred_df['rdelta']=pred_df['actual_dir']*pred_df['pdir_nb']*np.sign(pred_df['lead'])*pred_df['lead']
-  pred_df['gdelta']=pred_df['actual_dir']*pred_df['pdir_nb']*np.sign(pred_df['lead'])*pred_df['lead']
+  pred_df['gdelta']=pred_df['actual_dir']*pred_df['pdir_lr']*np.sign(pred_df['lead'])*pred_df['lead']
   # I should get initial red_l, green_l
   red_l   = [cp_l[0]]
   green_l = [cp_l[0]]
@@ -56,7 +56,8 @@ for yr in range(startyr,1+finalyr):
   # Do not move the next import:
   import matplotlib.pyplot as plt
   plt.figure(figsize=(15,10))
-  plt.plot(cdate_l, cp_l, 'b-', cdate_l, red_l[:-1], 'r-')
+  #  plt.plot(cdate_l, cp_l, 'b-', cdate_l, green_l[:-1], 'g-')# cdate_l, red_l[:-1], 'r-') #
+  plt.plot(cdate_l, green_l[:-1], 'g-', cdate_l, red_l[:-1], 'r-') #
 
   plt.title('Red,Green,Blue Visualization (Blue: Long Only, Red: Naive-Bayes, Green: Logistic-Regression)')
   plt.grid(True)
