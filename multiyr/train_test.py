@@ -70,10 +70,6 @@ for yr in range(startyr,1+finalyr):
     xr_a           = xf_a.reshape(1, -1)
     aprediction_lr = clf_lr.predict_proba(xr_a)[0,1]
     aprediction_nb = clf_nb.predict(xr_a)[0]
-
-    pdb.set_trace()
-    aprediction_nb 
-
     if (aprediction_lr > 0.5):
       predictions_lr_l.append(1)  # up   prediction
     else:
@@ -93,9 +89,17 @@ for yr in range(startyr,1+finalyr):
     else:
       recent_eff_lr_l.append(np.mean(x_eff_lr_l[-5:]))
       recent_eff_nb_l.append(np.mean(x_eff_nb_l[-5:]))
-
     # I should save accuracy of each prediction
-
+    #
+    if ((pctlead > 0) and (aprediction_lr > 0.5)):
+      acc_lr_l.append('tp')
+    if ((pctlead > 0) and (aprediction_lr < 0.5)):
+      acc_lr_l.append('fn')
+    if ((pctlead < 0) and (aprediction_lr > 0.5)):
+      acc_lr_l.append('fp')
+    if ((pctlead < 0) and (aprediction_lr < 0.5)):
+      acc_lr_l.append('tn')
+    #
     if ((pctlead > 0) and (aprediction_nb == True)):
       acc_nb_l.append('tp')
     if ((pctlead > 0) and (aprediction_nb == False)):
@@ -104,10 +108,19 @@ for yr in range(startyr,1+finalyr):
       acc_nb_l.append('fp')
     if ((pctlead < 0) and (aprediction_nb == False)):
       acc_nb_l.append('tn')
-
-
-  # I should save predictions_nb_l, eff, acc, so I can report later.
+    #
+    'end for'
+  # I should save predictions, eff, acc, so I can report later.
   test_df['actual_dir']    = np.sign(test_df['pctlead'])
+  #
+  test_df['pdir_lr']       = predictions_lr_l
+  test_df['x_eff_lr']      = x_eff_lr_l[1:]
+  test_df['recent_eff_lr'] = recent_eff_lr_l[1:]
+  if (len(test_df) - len(acc_lr_l) == 1):
+    # I should deal with most recent observation:
+    acc_lr_l.append('unknown')
+  test_df['accuracy_lr'] = acc_lr_l
+  #
   test_df['pdir_nb']       = predictions_nb_l
   test_df['x_eff_nb']      = x_eff_nb_l[1:]
   test_df['recent_eff_nb'] = recent_eff_nb_l[1:]
@@ -115,6 +128,7 @@ for yr in range(startyr,1+finalyr):
     # I should deal with most recent observation:
     acc_nb_l.append('unknown')
   test_df['accuracy_nb'] = acc_nb_l
+  #
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
 
