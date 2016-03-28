@@ -69,12 +69,16 @@ for yr in range(startyr,1+finalyr):
     xf_a           = xoos_a.astype(float)
     xr_a           = xf_a.reshape(1, -1)
     aprediction_lr = clf_lr.predict_proba(xr_a)[0,1]
-    aprediction_nb = clf_nb.predict(xr_a)
+    aprediction_nb = clf_nb.predict(xr_a)[0]
+
+    pdb.set_trace()
+    aprediction_nb 
+
     if (aprediction_lr > 0.5):
       predictions_lr_l.append(1)  # up   prediction
     else:
       predictions_lr_l.append(-1) # down prediction
-    if (aprediction_nb[0] == True):
+    if (aprediction_nb == True):
       predictions_nb_l.append(1)  # up   prediction
     else:
       predictions_nb_l.append(-1) # down prediction
@@ -89,15 +93,19 @@ for yr in range(startyr,1+finalyr):
     else:
       recent_eff_lr_l.append(np.mean(x_eff_lr_l[-5:]))
       recent_eff_nb_l.append(np.mean(x_eff_nb_l[-5:]))
-    # I should save accuracy of this prediction
-    if ((y_test_a[xcount] > 0) and (aprediction_nb > 0.5)):
+
+    # I should save accuracy of each prediction
+
+    if ((pctlead > 0) and (aprediction_nb == True)):
       acc_nb_l.append('tp')
-    if ((y_test_a[xcount] > 0) and (aprediction_nb < 0.5)):
+    if ((pctlead > 0) and (aprediction_nb == False)):
       acc_nb_l.append('fn')
-    if ((y_test_a[xcount] < 0) and (aprediction_nb > 0.5)):
+    if ((pctlead < 0) and (aprediction_nb == True)):
       acc_nb_l.append('fp')
-    if ((y_test_a[xcount] < 0) and (aprediction_nb < 0.5)):
+    if ((pctlead < 0) and (aprediction_nb == False)):
       acc_nb_l.append('tn')
+
+
   # I should save predictions_nb_l, eff, acc, so I can report later.
   test_df['actual_dir']    = np.sign(test_df['pctlead'])
   test_df['pdir_nb']       = predictions_nb_l
