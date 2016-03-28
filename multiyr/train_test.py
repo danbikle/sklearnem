@@ -82,7 +82,7 @@ for yr in range(startyr,1+finalyr):
     pctlead = y_test_a[xcount]
     x_eff_lr_l.append(predictions_lr_l[xcount]*pctlead)
     x_eff_nb_l.append(predictions_nb_l[xcount]*pctlead)
-    # I should save recent effectiveness of this prediction:
+    # I should save recent effectiveness of each prediction:
     if (xcount < 5):
       recent_eff_lr_l.append(0.0)
       recent_eff_nb_l.append(0.0)
