@@ -49,9 +49,9 @@ for yr in range(startyr,1+finalyr):
   # Do not move the next import:
   import matplotlib.pyplot as plt
   plt.figure(figsize=(15,10))
-  plt.plot(cdate_l, cp_l, 'b-', cdate_l, green_l[:-1], 'g-')
+  plt.plot(cdate_l, cp_l, 'b-', cdate_l, green_l[:-1], 'r-')
 
-  plt.title('Blue-Line/Green-Line Visualization (Blue: Long Only, Green: Follow Predictions)')
+  plt.title('Red,Green,Blue Visualization (Blue: Long Only, Red: Naive-Bayes, Green: Logistic-Regression)')
   plt.grid(True)
   pngf = 'plot'+str(yr)+'.png'
   plt.savefig(pngf)
