@@ -70,7 +70,10 @@ for yr in range(startyr,1+finalyr):
     xr_a           = xf_a.reshape(1, -1)
     aprediction_lr = clf_lr.predict_proba(xr_a)[0,1]
     aprediction_nb = clf_nb.predict(xr_a)
-    # if (aprediction > 0.5):
+    if (aprediction_lr > 0.5):
+      predictions_lr_l.append(1)  # up   prediction
+    else:
+      predictions_lr_l.append(-1) # down prediction
     if (aprediction_nb[0] == True):
       predictions_nb_l.append(1)  # up   prediction
     else:
