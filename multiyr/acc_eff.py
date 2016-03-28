@@ -65,11 +65,11 @@ for yr in range(startyr,1+finalyr):
   fp_i = len(fp_df)
   fn_i = len(fn_df)
   print('For '+str(yr)+':')
-  print('Naive-Bayes: Positive, Up,   Prediction Count is '+str(tp_i+fp_i))
-  print('Naive-Bayes: Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
-  print('Naive-Bayes: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
-  print('Naive-Bayes: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
-  print('Naive-Bayes: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
+  print('Logistic-Regression: Positive, Up,   Prediction Count is '+str(tp_i+fp_i))
+  print('Logistic-Regression: Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
+  print('Logistic-Regression: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
+  print('Logistic-Regression: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
+  print('Logistic-Regression: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
   # I should compute effectiveness
   pred_up_pred   = (pred_df['pdir_lr'] ==  1)
   pred_down_pred = (pred_df['pdir_lr'] == -1)
@@ -77,9 +77,9 @@ for yr in range(startyr,1+finalyr):
   pred_down_df   = pred_df[pred_down_pred]
   eff_up         = np.mean(pred_up_df['pctlead'])
   eff_down       = np.mean(pred_down_df['pctlead'])
-  print('Naive-Bayes: Positive, Up,   effectiveness is '+str(eff_up)+'%')
-  print('Naive-Bayes: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%')
-  print('Naive-Bayes: Negative, Down, effectiveness is '+str(eff_down)+'%')
+  print('Logistic-Regression: Positive, Up,   effectiveness is '+str(eff_up)+'%')
+  print('Logistic-Regression: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%')
+  print('Logistic-Regression: Negative, Down, effectiveness is '+str(eff_down)+'%')
 
 
 
