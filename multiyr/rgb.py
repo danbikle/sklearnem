@@ -30,16 +30,16 @@ for yr in range(startyr,1+finalyr):
   # I should get lead_l which leadp - cp
   lead_l  = list(np.array(leadp_l)-np.array(cp_l))
   pred_df['lead']  = lead_l
-  pred_df['gdelta']=pred_df['actual_dir']*pred_df['pdir_nb']*np.sign(pred_df['lead'])*pred_df['lead']
-  # I should get initial green_l
-  green_l = [cp_l[0]]
-  gcount  = 0
-  # I should grow green_l
-  for gdelta in pred_df['gdelta']:
-    gcount += 1
-    green_l.append(green_l[gcount-1]+gdelta)
-  # I should add green_l to df:
-  pred_df['green'] = green_l[:-1]
+  pred_df['rdelta']=pred_df['actual_dir']*pred_df['pdir_nb']*np.sign(pred_df['lead'])*pred_df['lead']
+  # I should get initial red_l
+  red_l = [cp_l[0]]
+  rcount  = 0
+  # I should grow red_l
+  for rdelta in pred_df['rdelta']:
+    rcount += 1
+    red_l.append(red_l[rcount-1]+rdelta)
+  # I should add red_l to df:
+  pred_df['red'] = red_l[:-1]
   # matplotlib likes dates:
   cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in pred_df['cdate'].values]
 
@@ -49,7 +49,7 @@ for yr in range(startyr,1+finalyr):
   # Do not move the next import:
   import matplotlib.pyplot as plt
   plt.figure(figsize=(15,10))
-  plt.plot(cdate_l, cp_l, 'b-', cdate_l, green_l[:-1], 'r-')
+  plt.plot(cdate_l, cp_l, 'b-', cdate_l, red_l[:-1], 'r-')
 
   plt.title('Red,Green,Blue Visualization (Blue: Long Only, Red: Naive-Bayes, Green: Logistic-Regression)')
   plt.grid(True)
