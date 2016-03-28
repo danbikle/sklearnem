@@ -41,12 +41,12 @@ for yr in range(startyr,1+finalyr):
   # I should learn from x_train_a,label_train_a:
 
   from sklearn import linear_model
-  clf = linear_model.LogisticRegression()
+  clf_lr = linear_model.LogisticRegression()
 
   from sklearn.naive_bayes import GaussianNB
-  clf = GaussianNB()
+  clf_nb = GaussianNB()
 
-  clf.fit(x_train_a, label_train_a)
+  clf_nb.fit(x_train_a, label_train_a)
   # Now that I have learned, I should predict:
   testf    = 'test'+str(yr)+'.csv'
   test_df  = pd.read_csv(testf)
@@ -64,7 +64,7 @@ for yr in range(startyr,1+finalyr):
     xf_a        = xoos_a.astype(float)
     xr_a        = xf_a.reshape(1, -1)
     # aprediction = clf.predict_proba(xr_a)[0,1]
-    aprediction = clf.predict(xr_a)
+    aprediction = clf_nb.predict(xr_a)
     # if (aprediction > 0.5):
     if (aprediction[0] == True):
       predictions_l.append(1)  # up   prediction
