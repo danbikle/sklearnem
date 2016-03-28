@@ -57,9 +57,9 @@ for yr in range(startyr,1+finalyr):
   import matplotlib.pyplot as plt
   plt.figure(figsize=(15,10))
   #  plt.plot(cdate_l, cp_l, 'b-', cdate_l, green_l[:-1], 'g-')# cdate_l, red_l[:-1], 'r-') #
-  plt.plot(cdate_l, green_l[:-1], 'g-', cdate_l, red_l[:-1], 'r-') #
+  plt.plot(cdate_l, red_l[:-1], 'r-', cdate_l, green_l[:-1], 'g-', cdate_l, cp_l, 'b-',)
 
-  plt.title('Red,Green,Blue Visualization (Blue: Long Only, Red: Naive-Bayes, Green: Logistic-Regression)')
+  plt.title('Red,Green,Blue Visualization (Red: Naive-Bayes, Green: Logistic-Regression, Blue: Long Only)')
   plt.grid(True)
   pngf = 'plot'+str(yr)+'.png'
   plt.savefig(pngf)
