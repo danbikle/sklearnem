@@ -94,20 +94,20 @@ for yr in range(startyr,1+finalyr):
     #
     if ((pctlead > 0) and (aprediction_lr > 0.5)):
       acc_lr_l.append('tp')
-    if ((pctlead > 0) and (aprediction_lr < 0.5)):
+    elif ((pctlead > 0) and (aprediction_lr < 0.5)):
       acc_lr_l.append('fn')
-    if ((pctlead < 0) and (aprediction_lr > 0.5)):
+    elif ((pctlead < 0) and (aprediction_lr > 0.5)):
       acc_lr_l.append('fp')
-    if ((pctlead < 0) and (aprediction_lr < 0.5)):
+    else:
       acc_lr_l.append('tn')
     #
     if ((pctlead > 0) and (aprediction_nb == True)):
       acc_nb_l.append('tp')
-    if ((pctlead > 0) and (aprediction_nb == False)):
+    elif ((pctlead > 0) and (aprediction_nb == False)):
       acc_nb_l.append('fn')
-    if ((pctlead < 0) and (aprediction_nb == True)):
+    elif ((pctlead < 0) and (aprediction_nb == True)):
       acc_nb_l.append('fp')
-    if ((pctlead < 0) and (aprediction_nb == False)):
+    else:
       acc_nb_l.append('tn')
     #
     'end for'
