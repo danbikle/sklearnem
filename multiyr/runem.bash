@@ -21,7 +21,7 @@ echo I should see some data:
 tail   ftrGSPC2.csv
 
 # Next I generate training data CSV files:
-STARTYR=2010
+STARTYR=1980
 ENDYR=2016
 python ~/sklearnem/multiyr/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 # The above call should give me two sets of CSV files.
