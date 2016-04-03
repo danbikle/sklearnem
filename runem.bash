@@ -1,6 +1,9 @@
 #!/bin/bash
+# 04/03/2016 Andrew Zhang
+# For Dan's Meetup
 
 # runem.bash
+
 
 # This script should run the demos.
 set -x
