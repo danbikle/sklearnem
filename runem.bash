@@ -1,7 +1,7 @@
 #!/bin/bash
 # 04/03/2016 Andrew Zhang
 # For Dan's Meetup
-# Updated on azhang
+# Updated on azhang3
 # runem.bash
 
 
