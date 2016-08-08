@@ -1,6 +1,11 @@
 #!/bin/bash
+# 04/03/2016 Andrew Zhang
+# For Dan's Meetup
+# Updated on azhang1
+
 
 # runem.bash
+
 
 # This script should run the demos.
 set -x
@@ -10,5 +15,3 @@ python logistic_regression11.py
 python svm11.py
 python gbrt11.py
 exit
-
-
